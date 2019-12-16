@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'me@jonathancardoso.com'
 
   spec.summary       = 'Android\'s App Version Managment'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-android_version_manager"
+  spec.homepage      = "https://github.com/JCMais/fastlane-plugin-android_version_manager"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
