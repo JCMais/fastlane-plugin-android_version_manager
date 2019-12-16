@@ -1,3 +1,3 @@
 lane :test do
-  android_version_manager
+  # @TODO Create test lane
 end

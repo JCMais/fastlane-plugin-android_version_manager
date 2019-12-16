@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'Jonathan Cardoso Machado'
   spec.email         = 'me@jonathancardoso.com'
 
-  spec.summary       = 'Android's App Version Managment'
+  spec.summary       = 'Android\'s App Version Managment'
   # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-android_version_manager"
   spec.license       = "MIT"
 
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   # since this would cause a circular dependency
 
   # spec.add_dependency 'your-dependency', '~> 1.0.0'
+  spec.add_dependency 'semantic', '~> 1.6.0'
 
   spec.add_development_dependency('pry')
   spec.add_development_dependency('bundler')

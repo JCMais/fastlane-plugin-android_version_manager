@@ -1,0 +1,19 @@
+def defVersionCode = 1 // comment
+def defVersionCodeInvalid = "a" // comment
+
+def defVersionName = "1.0.0" // comment
+def defVersionNameInvalid = "1.0.0abc" // comment
+
+android {
+  compileSdkVersion 24
+  buildToolsVersion "24.0.2"
+  defaultConfig {
+    applicationIdSuffix ""
+    minSdkVersion 14
+    targetSdkVersion 22
+    versionCode 12345 // comment
+    versionCodeInvalid "a" // comment
+    versionName "1.0.0" // comment
+    versionNameInvalid "1.0.0abc" // comment
+  }
+}

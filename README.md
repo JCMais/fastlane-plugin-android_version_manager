@@ -14,25 +14,47 @@ fastlane add_plugin android_version_manager
 
 Android's App Version Managment
 
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+This plugin enables you to more easily manage Android app versioning with fastlane.
+
+### Available Actions
+
+Read each action metadata on their respective source code:
+
+#### [android_get_value_from_build_action](./lib/fastlane/plugin/android_version_manager/actions/android_get_value_from_build_action.rb)
+
+#### [android_get_version_code_action](./lib/fastlane/plugin/android_version_manager/actions/android_get_version_code_action.rb)
+
+#### [android_get_version_name_action](./lib/fastlane/plugin/android_version_manager/actions/android_get_version_name_action.rb)
+
+#### [android_increment_version_code_action](./lib/fastlane/plugin/android_version_manager/actions/android_increment_version_code_action.rb)
+
+#### [android_increment_version_name_action](./lib/fastlane/plugin/android_version_manager/actions/android_increment_version_name_action.rb)
+
+### Version Control
+
+This plugin does not provide any functionality related to version control. This was intentional because that can be easily implemented on the lane directly, for example, just use the following actions:
+1. [ensure_git_status_clean](https://docs.fastlane.tools/actions/ensure_git_status_clean/)
+2. [git_tag_exists](https://docs.fastlane.tools/actions/git_tag_exists/)
+2. [git_add](https://docs.fastlane.tools/actions/git_add/)
+2. [git_commit](https://docs.fastlane.tools/actions/git_commit/)
+4. [add_git_tag](https://docs.fastlane.tools/actions/add_git_tag/)
+3. [push_to_git_remote](https://docs.fastlane.tools/actions/push_to_git_remote/)
 
 ## Example
 
 Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
 
 ## Run tests for this plugin
 
 To run both the tests, and code style validation, run
 
 ```
-rake
+bundle exec rake
 ```
 
 To automatically fix many of the styling issues, use
 ```
-rubocop -a
+bundle exec rubocop -a
 ```
 
 ## Issues and Feedback

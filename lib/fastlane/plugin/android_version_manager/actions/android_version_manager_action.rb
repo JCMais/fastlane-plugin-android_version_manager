@@ -27,20 +27,21 @@ module Fastlane
 
       def self.available_options
         [
-          # FastlaneCore::ConfigItem.new(key: :your_option,
-          #                         env_name: "ANDROID_VERSION_MANAGER_YOUR_OPTION",
-          #                      description: "A description of your option",
-          #                         optional: false,
-          #                             type: String)
+          FastlaneCore::ConfigItem.new(key: :app_project_dir,
+                                  env_name: "ANDROID_VERSIONING_APP_PROJECT_DIR",
+                               description: "The path to the application source folder in the Android project (default: android/app)",
+                                  optional: true,
+                                      type: String,
+                             default_value: "android/app"),
+          FastlaneCore::ConfigItem.new(key: :key,
+                               description: "The property key",
+                                      type: String)
+
         ]
       end
 
       def self.is_supported?(platform)
-        # Adjust this if your plugin only works for a particular platform (iOS vs. Android, for example)
-        # See: https://docs.fastlane.tools/advanced/#control-configuration-by-lane-and-by-platform
-        #
-        # [:ios, :mac, :android].include?(platform)
-        true
+        platform == :android
       end
     end
   end
