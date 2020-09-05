@@ -44,6 +44,14 @@ This plugin does not provide any functionality related to version control. This 
 
 Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
 
+## Development
+
+After cloning the repo, run:
+
+```
+bundle install --path vendor/bundle
+```
+
 ## Run tests for this plugin
 
 To run both the tests, and code style validation, run
