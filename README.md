@@ -65,7 +65,7 @@ _fastlane_ is the easiest way to automate beta deployments and releases for your
 
 After cloning the repo, run:
 
-```
+```bash
 bundle install --path vendor/bundle
 ```
 
@@ -73,16 +73,20 @@ bundle install --path vendor/bundle
 
 To run both the tests, and code style validation, run
 
-```
+```bash
 bundle exec rake
 ```
 
 To automatically fix many of the styling issues, use
-```
+```bash
 bundle exec rubocop -a
 ```
 
 ### Releasing
-```
-budnle exec rake release
+
+1. increment version at [`./lib/fastlane/plugin/android_version_manager/version.rb`](./lib/fastlane/plugin/android_version_manager/version.rb).
+2. commit changes
+3. run:
+```bash
+bundle exec rake release
 ```
