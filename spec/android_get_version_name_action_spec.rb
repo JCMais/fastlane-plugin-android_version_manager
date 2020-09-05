@@ -32,6 +32,20 @@ describe Fastlane::Actions::AndroidGetVersionNameAction do
       expect(result.to_s).to eq("1.0.0")
       expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_NAME]).to eq(result)
     end
+
+    it "should cast major to major.minor.patch from build.gradle" do
+      result = execute_lane_test(key: "defVersionNameMajor")
+      expect(result).to be_a_kind_of(Semantic::Version)
+      expect(result.to_s).to eq("1.0.0")
+      expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_NAME]).to eq(result)
+    end
+
+    it "should cast major.minor to major.minor.patch from build.gradle" do
+      result = execute_lane_test(key: "defVersionNameMajorMinor")
+      expect(result).to be_a_kind_of(Semantic::Version)
+      expect(result.to_s).to eq("1.0.0")
+      expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_NAME]).to eq(result)
+    end
   end
 
   describe "Validate params and version code" do

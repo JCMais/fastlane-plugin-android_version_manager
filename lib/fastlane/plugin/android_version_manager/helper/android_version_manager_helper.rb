@@ -86,6 +86,16 @@ module Fastlane
           UI.user_error!("Unable to find version name with key #{key} on file #{file_path}")
         end
 
+        version_name_parts = version_name.split(".")
+
+        # major
+        if version_name_parts.length == 1
+          version_name = "#{version_name_parts[0]}.0.0"
+        # major.minor
+        elsif version_name_parts.length == 2
+          version_name = "#{version_name_parts[0]}.#{version_name_parts[1]}.0"
+        end
+
         begin
           version_name = Semantic::Version.new(version_name)
         rescue Exception # rubocop:disable RescueException
