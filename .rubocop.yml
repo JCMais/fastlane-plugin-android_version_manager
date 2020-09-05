@@ -33,9 +33,11 @@ Style/EmptyMethod:
   Enabled: false
 Style/BracesAroundHashParameters:
   Enabled: false
+Style/EndOfLine:
+  EnforcedStyle: lf
 Lint/UselessAssignment:
   Exclude:
-  - "**/spec/**/*"
+    - "**/spec/**/*"
 # Require/MissingRequireStatement:
 #   Exclude:
 #   - "**/spec/**/*.rb"
@@ -62,7 +64,7 @@ Layout/IndentHeredoc:
   Enabled: false
 Style/MixinGrouping:
   Exclude:
-  - "**/spec/**/*"
+    - "**/spec/**/*"
 Lint/HandleExceptions:
   Enabled: false
 Lint/UnusedBlockArgument:
@@ -112,36 +114,36 @@ Lint/UnusedMethodArgument:
   Enabled: false
 Lint/ParenthesesAsGroupedExpression:
   Exclude:
-  - "**/spec/**/*"
+    - "**/spec/**/*"
 Style/PredicateName:
   Enabled: false
 Style/PerlBackrefs:
   Enabled: false
 Layout/SpaceAroundOperators:
   Exclude:
-  - "**/spec/actions_specs/xcodebuild_spec.rb"
+    - "**/spec/actions_specs/xcodebuild_spec.rb"
 AllCops:
   TargetRubyVersion: 2.0
   Include:
-  - "*/lib/assets/*Template"
-  - "*/lib/assets/*TemplateAndroid"
+    - "*/lib/assets/*Template"
+    - "*/lib/assets/*TemplateAndroid"
   Exclude:
-  - "**/lib/assets/custom_action_template.rb"
-  - "./vendor/**/*"
-  - "**/lib/assets/DefaultFastfileTemplate"
-  - "**/lib/assets/MatchfileTemplate"
-  - "**/spec/fixtures/broken_files/broken_file.rb"
+    - "**/lib/assets/custom_action_template.rb"
+    - "./vendor/**/*"
+    - "**/lib/assets/DefaultFastfileTemplate"
+    - "**/lib/assets/MatchfileTemplate"
+    - "**/spec/fixtures/broken_files/broken_file.rb"
 Style/FileName:
   Exclude:
-  - "**/Dangerfile"
-  - "**/Brewfile"
-  - "**/Gemfile"
-  - "**/Podfile"
-  - "**/Rakefile"
-  - "**/Fastfile"
-  - "**/Deliverfile"
-  - "**/Snapfile"
-  - "**/*.gemspec"
+    - "**/Dangerfile"
+    - "**/Brewfile"
+    - "**/Gemfile"
+    - "**/Podfile"
+    - "**/Rakefile"
+    - "**/Fastfile"
+    - "**/Deliverfile"
+    - "**/Snapfile"
+    - "**/*.gemspec"
 Style/Documentation:
   Enabled: false
 Style/MutableConstant:
@@ -163,24 +165,24 @@ Style/TrailingCommaInLiteral:
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   IgnoredMethods:
-  - add_dependency
-  - require
-  - require_relative
-  - fastlane_require
-  - gem
-  - program
-  - command
-  - raise
-  - attr_accessor
-  - attr_reader
-  - desc
-  - lane
-  - private_lane
-  - platform
-  - to
-  - describe
-  - it
-  - be
-  - context
-  - before
-  - after
+    - add_dependency
+    - require
+    - require_relative
+    - fastlane_require
+    - gem
+    - program
+    - command
+    - raise
+    - attr_accessor
+    - attr_reader
+    - desc
+    - lane
+    - private_lane
+    - platform
+    - to
+    - describe
+    - it
+    - be
+    - context
+    - before
+    - after
