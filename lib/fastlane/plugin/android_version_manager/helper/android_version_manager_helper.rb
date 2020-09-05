@@ -24,17 +24,14 @@ module Fastlane
           UI.verbose("get_key_from_gradle_file - path: #{path}")
           UI.verbose("get_key_from_gradle_file - absolute_path: #{File.expand_path(path)}")
           begin
-            File.open(path, "r") do |file|
-              file.each_line do |line, index|
-                unless line.match(regex) && !found
-                  next
-                end
-                line_found = line
-                line_found_index = index
-                _key, _equals, _left, value, _right, _comment = line.match(regex).captures
-                break
+            File.foreach(path).with_index do |line, index|
+              unless line.match(regex) && !found
+                next
               end
-              file.close
+              line_found = line
+              line_found_index = index
+              _key, _equals, _left, value, _right, _comment = line.match(regex).captures
+              break
             end
           end
         end
@@ -50,7 +47,7 @@ module Fastlane
           Tempfile.open(".#{File.basename(path)}", File.dirname(path)) do |tempfile|
             UI.verbose("set_key_value_on_gradle_file - path: #{path}")
             UI.verbose("set_key_value_on_gradle_file - absolute_path: #{File.expand_path(path)}")
-            File.open(path).each do |line, index|
+            File.foreach(path).with_index do |line, index|
               tempfile.puts(index == line_found_index ? line.sub(value, new_value.to_s) : line)
             end
             tempfile.close
