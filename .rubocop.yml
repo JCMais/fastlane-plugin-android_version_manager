@@ -33,8 +33,6 @@ Style/EmptyMethod:
   Enabled: false
 Style/BracesAroundHashParameters:
   Enabled: false
-Style/EndOfLine:
-  EnforcedStyle: lf
 Lint/UselessAssignment:
   Exclude:
     - "**/spec/**/*"
@@ -56,6 +54,8 @@ Layout/AlignHash:
   Enabled: false
 Layout/DotPosition:
   Enabled: false
+Layout/EndOfLine:
+  EnforcedStyle: lf
 Style/DoubleNegation:
   Enabled: false
 Style/SymbolArray:
