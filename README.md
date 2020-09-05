@@ -44,26 +44,6 @@ This plugin does not provide any functionality related to version control. This 
 
 Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
 
-## Development
-
-After cloning the repo, run:
-
-```
-bundle install --path vendor/bundle
-```
-
-## Run tests for this plugin
-
-To run both the tests, and code style validation, run
-
-```
-bundle exec rake
-```
-
-To automatically fix many of the styling issues, use
-```
-bundle exec rubocop -a
-```
 
 ## Issues and Feedback
 
@@ -80,3 +60,29 @@ For more information about how the `fastlane` plugin system works, check out the
 ## About _fastlane_
 
 _fastlane_ is the easiest way to automate beta deployments and releases for your iOS and Android apps. To learn more, check out [fastlane.tools](https://fastlane.tools).
+
+## Development
+
+After cloning the repo, run:
+
+```
+bundle install --path vendor/bundle
+```
+
+### Run tests for this plugin
+
+To run both the tests, and code style validation, run
+
+```
+bundle exec rake
+```
+
+To automatically fix many of the styling issues, use
+```
+bundle exec rubocop -a
+```
+
+### Releasing
+```
+budnle exec rake release
+```
