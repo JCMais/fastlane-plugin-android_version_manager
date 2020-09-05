@@ -44,7 +44,7 @@ module Fastlane
 
         # https://stackoverflow.com/a/4174125/710693
         Dir.glob(file_path) do |path|
-          Tempfile.open(".#{File.basename(path)}", File.dirname(path)) do |tempfile|
+          Tempfile.open(".#{File.basename(path)}", File.dirname(path), encoding: "UTF-8", binmode: true) do |tempfile|
             UI.verbose("set_key_value_on_gradle_file - path: #{path}")
             UI.verbose("set_key_value_on_gradle_file - absolute_path: #{File.expand_path(path)}")
             File.foreach(path).with_index do |line, index|
