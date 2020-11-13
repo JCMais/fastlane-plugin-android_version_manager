@@ -3,6 +3,10 @@
 require 'spec_helper'
 
 describe Fastlane::Actions::AndroidIncrementVersionCodeAction do
+  def execute_lane_test_kts(dir: '../**/kts', key: nil, version_code: nil)
+    execute_lane_test(dir: dir, key: key, version_code: version_code)
+  end
+
   def execute_lane_test(dir: '../**/app', key: nil, version_code: nil)
     params = [
       "app_project_dir: \"#{dir}\","
@@ -24,13 +28,33 @@ describe Fastlane::Actions::AndroidIncrementVersionCodeAction do
       expect(result).to eq(12_346)
       expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_CODE]).to eq(result)
     end
+
+    it "increments default versionCode on build.gradle.kts", :modifies_gradle do
+      result = execute_lane_test_kts
+      expect(result).to eq(12_346)
+      expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_CODE]).to eq(result)
+    end
+
     it "increments def versionCode on build.gradle", :modifies_gradle do
       result = execute_lane_test(key: "defVersionCode")
       expect(result).to eq(2)
       expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_CODE]).to eq(result)
     end
+
+    it "increments def versionCode on build.gradle.kts", :modifies_gradle do
+      result = execute_lane_test_kts(key: "defVersionCode")
+      expect(result).to eq(2)
+      expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_CODE]).to eq(result)
+    end
+
     it "increments versionCode on build.gradle to the specified amount", :modifies_gradle do
       result = execute_lane_test(version_code: 23_456)
+      expect(result).to eq(23_456)
+      expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_CODE]).to eq(result)
+    end
+
+    it "increments versionCode on build.gradle.kts to the specified amount", :modifies_gradle do
+      result = execute_lane_test_kts(version_code: 23_456)
       expect(result).to eq(23_456)
       expect(Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_CODE]).to eq(result)
     end

@@ -29,6 +29,7 @@ def revert_fixtures
   destination = "./spec"
   [
     "#{destination}/fixtures/app/build.gradle",
+    "#{destination}/fixtures/kts/build.gradle.kts"
   ].each do |f|
     FileUtils.rm(f)
   end

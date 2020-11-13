@@ -9,6 +9,15 @@ module Fastlane
 
   module Helper
     class AndroidVersionManagerHelper
+      def self.build_gradle_exists?(app_project_dir)
+        # Not using File.exist?("#{value}/build.gradle") because it does not handle globs
+        return BuildGradleFile.new(app_project_dir).exists?
+      end
+
+      def self.find_build_gradle(app_project_dir)
+        return BuildGradleFile.new(app_project_dir).find
+      end
+
       # class methods that you define here become available in your action
       # as `Helper::AndroidVersionManagerHelper.your_method`
       # Most actions code are here to follow this advice: https://docs.fastlane.tools/advanced/actions/#calling-other-actions
