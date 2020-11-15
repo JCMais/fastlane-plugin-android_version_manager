@@ -12,7 +12,6 @@ class BuildGradleFile
   end
 
   def exists?
-    # Not using File.exist? because it does not handle globs
     return kts_exists? || classic_exists?
   end
 
@@ -33,6 +32,7 @@ class BuildGradleFile
   end
 
   def file_exists?(path)
+    # Not using File.exist? because it does not handle globs
     return Dir[path].any?
   end
 end

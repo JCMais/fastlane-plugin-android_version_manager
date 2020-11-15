@@ -10,7 +10,6 @@ module Fastlane
   module Helper
     class AndroidVersionManagerHelper
       def self.build_gradle_exists?(app_project_dir)
-        # Not using File.exist?("#{value}/build.gradle") because it does not handle globs
         return BuildGradleFile.new(app_project_dir).exists?
       end
 
