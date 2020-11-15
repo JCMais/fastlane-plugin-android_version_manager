@@ -1,4 +1,4 @@
-require "fastlane/action"
+require_relative 'android_base_action'
 require_relative "../helper/android_version_manager_helper"
 
 module Fastlane
@@ -8,14 +8,15 @@ module Fastlane
       ANDROID_VERSION_NAME ||= :ANDROID_VERSION_NAME
     end
 
-    class AndroidGetVersionNameAction < Action
+    class AndroidGetVersionNameAction < AndroidBaseAction
       def self.run(params)
         # fastlane will take care of reading in the parameter and fetching the environment variable:
         UI.message("Parameter app_project_dir: #{params[:app_project_dir]}")
         UI.message("Parameter key: #{params[:key]}")
 
+        file_path = find_build_gradle(params[:app_project_dir])
         # We can expect version_name to be an existing and valid semver version name
-        version_name = Helper::AndroidVersionManagerHelper.get_version_name_from_gradle_file("#{params[:app_project_dir]}/build.gradle", params[:key])
+        version_name = Helper::AndroidVersionManagerHelper.get_version_name_from_gradle_file(file_path, params[:key])
 
         Actions.lane_context[Fastlane::Actions::SharedValues::ANDROID_VERSION_NAME] = version_name
 
@@ -36,16 +37,7 @@ module Fastlane
 
       def self.available_options
         [
-          FastlaneCore::ConfigItem.new(key: :app_project_dir,
-                                       env_name: "FL_ANDROID_GET_VERSION_CODE_APP_PROJECT_DIR",
-                                       description: "The path to the application source folder in the Android project (default: android/app)",
-                                       optional: true,
-                                       type: String,
-                                       default_value: "android/app",
-                                       verify_block: proc do |value|
-                                         # Not using File.exist?("#{value}/build.gradle") because it does not handle globs
-                                         UI.user_error!("Couldn't find build.gradle file at path '#{value}'") unless Dir["#{value}/build.gradle"].any?
-                                       end),
+          app_project_dir_action,
           FastlaneCore::ConfigItem.new(key: :key,
                                        env_name: "FL_ANDROID_GET_VERSION_CODE_KEY",
                                        description: "The property key",
@@ -83,14 +75,6 @@ module Fastlane
       def self.return_type
         # https://github.com/fastlane/fastlane/blob/051e5012984d97257571a76627c1261946afb8f8/fastlane/lib/fastlane/action.rb#L23-L30
         :int
-      end
-
-      def self.authors
-        ["Jonathan Cardoso", "@_jonathancardos", "JCMais"]
-      end
-
-      def self.is_supported?(platform)
-        platform == :android
       end
     end
   end

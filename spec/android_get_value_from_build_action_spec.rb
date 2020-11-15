@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Fastlane::Actions::AndroidGetValueFromBuildAction do
+  def execute_lane_test_kts(dir: '../**/kts', key: nil)
+    execute_lane_test(dir: dir, key: key)
+  end
+
   def execute_lane_test(dir: '../**/app', key: nil)
     params = [
       "app_project_dir: \"#{dir}\","
@@ -16,15 +20,25 @@ describe Fastlane::Actions::AndroidGetValueFromBuildAction do
   end
 
   describe "Get def variable" do
-    it "should return defVersionName from build.gradle" do
+    it "returns defVersionName from build.gradle" do
       result = execute_lane_test(key: "defVersionName")
+      expect(result).to eq("1.0.0")
+    end
+
+    it "returns defVersionName from build.gradle.kts" do
+      result = execute_lane_test_kts(key: "defVersionName")
       expect(result).to eq("1.0.0")
     end
   end
 
   describe "Get versionName property" do
-    it "should return versionName from build.gradle" do
+    it "returns versionName from build.gradle" do
       result = execute_lane_test(key: "versionName")
+      expect(result).to eq("1.0.0")
+    end
+
+    it "returns versionName from build.gradle.kts" do
+      result = execute_lane_test_kts(key: "versionName")
       expect(result).to eq("1.0.0")
     end
   end
